@@ -20,4 +20,12 @@ public class ChatMessage {
     public void setContents(String contents) {
         this.contents = contents;
     }
+
+    @Override
+    public String toString() {
+        return "ChatMessage{" +
+                "time=" + time +
+                ", contents='" + contents + '\'' +
+                '}';
+    }
 }

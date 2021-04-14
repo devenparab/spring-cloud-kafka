@@ -3,6 +3,8 @@ package com.example.freshspringboot.controller;
 import com.example.freshspringboot.model.ChatMessage;
 import com.example.freshspringboot.producer.Producer;
 import com.example.freshspringboot.util.KafkaUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +48,7 @@ public class Controller {
     }
 
     @GetMapping("/offset/groupId/{groupId}")
-    public Map<String, Long> getCurrentOffset(@PathVariable String groupId) throws InterruptedException, ExecutionException {
+    public Map<String, Long> getCurrentOffset(@PathVariable String groupId) throws InterruptedException, ExecutionException, JsonProcessingException {
         System.out.println("### called getCurrentOffset REST ###");
         Map<String, Long> offsetDetails = kafkaUtil.getOffsetDetails(groupId);
         return offsetDetails;
